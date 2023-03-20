@@ -1,0 +1,21 @@
+.button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #aaaaaa;
+    color: #aaaaaa;
+    transform: scale(1);
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover{
+        border: 2px solid #aaaaaa; 
+    }
+
+    &:active{
+        transform: scale(0.9);
+    }
+}
