@@ -22,7 +22,7 @@ const Header: FC = () => {
             <div className="header__container wrapper">   
                 <Input value={title} placeholder='Title' onChange={onChangeInput}/>
                 <TextArea value={body} placeholder='Body' onChange={onChangeTextArea}/>
-                <HeaderButton>Add ToDo</HeaderButton>
+                <HeaderButton className="button">Add ToDo</HeaderButton>
             </div>
         </div>
     )

@@ -3,12 +3,14 @@ import '../../styles/HeaderButton.scss'
 interface IButton{
     children: React.ReactNode,
     onClick?: React.MouseEventHandler<HTMLButtonElement>,
-    disabled?: boolean
+    disabled?: boolean,
+    style?: React.CSSProperties,
+    className: string,
 }
 
 const HeaderButton = ({children, onClick, ...rest}: IButton) => {
     return(
-            <button className="button" onClick={onClick} {...rest} >{children}</button>
+            <button onClick={onClick} {...rest} >{children}</button>
     )
 }
 

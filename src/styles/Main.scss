@@ -26,24 +26,49 @@
     align-items: center;
 
     &__note{
+        display: flex;
+        justify-content: space-between;
         margin-top: 20px;
         max-width: 800px;
         width: 100%;
         cursor: pointer;
+        border: 2px solid transparent;
+        background: transparent;
+        border-bottom: 2px solid #707070;
+    }
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__buttons{
+        display: flex;
+        flex-direction: column;
     }
 }
 
 .note{
     &__title{
-        color: #aaaaaa;
+        color: #707070;
         font-size: 36px;
         font-weight: 600;
     }
 
     &__body{
-        color: #aaaaaa;
+        color: #707070;
         font-size: 24px;
         font-weight: 400;
     }
+
+    &__tags{
+        display: flex;
+    }
+
+    &__tag{
+        margin-left: 5px;
+    }
+    
 }
 
