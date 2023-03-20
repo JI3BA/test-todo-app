@@ -1,6 +1,6 @@
 import '../../styles/Input.scss'
 
-interface Iinput {
+export interface Iinput {
     placeholder: string,
     value: string,
     name?: string,

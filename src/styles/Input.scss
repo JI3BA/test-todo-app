@@ -4,16 +4,22 @@
     padding: 10px;
     outline: none;
     text-decoration: none;
-    border: none;
+    border: 2px solid transparent;
     background: transparent;
     border-bottom: 2px solid #aaaaaa;
     font-size: 14px;
     font-weight: 500;
     color: #aaaaaa;
+    transition: border .5s;
 
     &::placeholder{
         font-size: 14px;
         font-weight: 500;
         color: #aaaaaa;
+    }
+
+    &__filter--active{
+        border: 2px solid #aaaaaa;
+        transition: border .5s;
     }
 }
