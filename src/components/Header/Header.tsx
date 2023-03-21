@@ -39,12 +39,11 @@ const Header: FC<HeaderProps> = (props) => {
 
         if(event.target.name === 'body'){
             setBodyTag([...value.split(' ').filter(item => item.includes('#'))]) 
-            console.log(bodyTag)
         }
     };
 
     const onBlur = () => {
-        const checkDupTags: string[] = [...note.tags, ...bodyTag]
+        const checkDupTags: string[] = [...bodyTag]
         setNote({...note, tags: checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item))})
     }
 
