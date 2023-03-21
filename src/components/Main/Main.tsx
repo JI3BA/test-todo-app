@@ -1,13 +1,14 @@
 import React, { FC, useState } from "react";
 import Filter from "../Filter/Filter";
 import '../../styles/Main.scss'
-import HeaderButton from "../HeaderButton/HeaderButton";
+import Button from "../Button/Button";
 
 interface INotes {
     id: number,
     title: string,
     body: string,
-    tags: string[]
+    tags: string[],
+    completed: boolean
 }
 
 const Main: FC = () => {
@@ -17,19 +18,22 @@ const Main: FC = () => {
             id: 0,
             title: 'car',
             body: 'I want to #buy a #car.',
-            tags: ['#buy', '#car']
+            tags: ['#buy', '#car'],
+            completed: false,
         },
         {
             id: 1,
             title: 'study',
             body: 'I will #learn English #tommorow',
-            tags: ['#learn', '#tommorow']
+            tags: ['#learn', '#tommorow'],
+            completed: false,
         },
         {
             id: 2,
             title: 'walk',
             body: 'I am #go for a #walk at Seven p.m.',
-            tags: ['#go', '#walk']
+            tags: ['#go', '#walk'],
+            completed: false,
         },
     ])
 
@@ -54,9 +58,9 @@ const Main: FC = () => {
                         </div>
 
                         <div className="notes__buttons">
-                            <HeaderButton className="button button__open">Open</HeaderButton>
-                            <HeaderButton className="button button__edit">Edit</HeaderButton>
-                            <HeaderButton className="button button__delete">Delete</HeaderButton>
+                            <Button className="button button__open">Open</Button>
+                            <Button className="button button__edit">Edit</Button>
+                            <Button className="button button__delete">Delete</Button>
                         </div>
                     </div>)}
                 </div>

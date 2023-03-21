@@ -1,4 +1,4 @@
-import '../../styles/HeaderButton.scss'
+import '../../styles/Button.scss'
 
 interface IButton{
     children: React.ReactNode,

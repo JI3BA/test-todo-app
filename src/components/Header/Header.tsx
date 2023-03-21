@@ -2,10 +2,9 @@ import React, { FC, useState, useRef, useEffect } from "react";
 import Input from "../Input/Input";
 import '../../styles/Header.scss'
 import TextArea from "../TextArea/TextArea";
-import HeaderButton from "../HeaderButton/HeaderButton";
+import Button from "../Button/Button";
 
 const Header: FC = () => {
-    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
 
@@ -22,7 +21,7 @@ const Header: FC = () => {
             <div className="header__container wrapper">   
                 <Input value={title} placeholder='Title' onChange={onChangeInput}/>
                 <TextArea value={body} placeholder='Body' onChange={onChangeTextArea}/>
-                <HeaderButton className="button">Add ToDo</HeaderButton>
+                <Button className="button">Add ToDo</Button>
             </div>
         </div>
     )
