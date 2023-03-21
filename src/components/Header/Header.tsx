@@ -22,7 +22,6 @@ const Header: FC<HeaderProps> = (props) => {
     const [note, setNote] = useState(isEdit ? props.editNote : {title: '', body: '', tags: ['']});
     const [bodyTag, setBodyTag] = useState<string[]>([]);
  
-
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
@@ -40,10 +39,11 @@ const Header: FC<HeaderProps> = (props) => {
 
         if(event.target.name === 'body'){
             setBodyTag([...value.split(' ').filter(item => item.includes('#'))]) 
+            console.log(bodyTag)
         }
     };
 
-    const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const onBlur = () => {
         const checkDupTags: string[] = [...note.tags, ...bodyTag]
         setNote({...note, tags: checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item))})
     }
@@ -58,8 +58,8 @@ const Header: FC<HeaderProps> = (props) => {
                                 {note.tags.map((tag, index) =>  <p className="note__body note__tag" key={index}>{tag}</p>)}
                             </div>
                     }
-                    {!isEdit ? <Button className="button" onClick={onClick}>Add ToDo</Button>
-                    : <Button className="button" onClick={onClick}>Edit ToDo</Button>}
+                    {!isEdit ? <Button className="button" onClick={onClick}>Add Note</Button>
+                    : <Button className="button" onClick={onClick}>Edit Note</Button>}
                 </form>
             </div>
         </div>

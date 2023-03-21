@@ -34,7 +34,7 @@ const Main: FC = () => {
                         <div className="notes__note" key={item.id}>
                             <div className="notes__text" onClick={() => checkNote(item.id)}>
                                 <h2 className="note__title" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}}>{index+1}. {item.title}</h2>
-                                <p className="note__body" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}}>{item.body}</p>
+                                <p className="note__body" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}}>{item.body.split(' ').map((word,index) => word.includes('#') ? <span className="note__body--tag-light" key={index}>{` ${word} `}</span> : ` ${word} `)}</p>
                                 <div className="note__tags">
                                     {item.tags.map((tag, index) =>  <p className="note__body note__tag" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}} key={index}>{tag}</p>)}
                                 </div>
