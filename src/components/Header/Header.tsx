@@ -30,6 +30,12 @@ const Header: FC<HeaderProps> = (props) => {
             setFormValid(true)
         }
     }, [isEdit])
+
+    useEffect(() => {
+        if(note.body.trim().length > 5){
+            setFormValid(true)
+        }
+    }, [note.body])
  
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
