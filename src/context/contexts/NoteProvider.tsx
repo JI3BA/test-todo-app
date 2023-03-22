@@ -12,6 +12,9 @@ export const NoteProvider: FC<StoreProviderProps> = ({ children }) => {
       })
     const [notesEdit, setNotesEdit] = useState<Note['id']>(0);
 
+    const [modal, setModal] = useState<boolean>(false)
+    const [modalNote, setModalNote] = useState<Note[]>([])
+
     useEffect(() => {
         localStorage.setItem('notes', JSON.stringify(notes))
     }, [notes])
@@ -51,5 +54,15 @@ export const NoteProvider: FC<StoreProviderProps> = ({ children }) => {
             )
     }
 
-    return <NoteContext.Provider value={{notes, setNotes, addNewNote, selectNotesEdit, changeNote, notesEdit, checkNote, removeNote}}>{children}</NoteContext.Provider>
+    const openModalNote = (id: Note['id']): void => {
+        setModalNote(notes.filter(item => item.id === id))
+        setModal(true)
+      }   
+    
+      const setModalNotes = (modal: boolean): void => {
+        setModal(modal)
+      }
+
+    return <NoteContext.Provider value={{notes, setNotes, addNewNote, selectNotesEdit, changeNote, notesEdit, checkNote, removeNote,
+        modal, modalNote, setModalNotes, openModalNote}}>{children}</NoteContext.Provider>
 }

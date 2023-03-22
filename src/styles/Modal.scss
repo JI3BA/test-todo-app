@@ -1,0 +1,63 @@
+.modal{  
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 2;
+    cursor: pointer;
+
+    &__container{
+        position: fixed;
+        max-width: 800px;
+        width: 100%;
+        padding: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: #e6e6e6;
+        box-shadow: 0 0 50px 50px #5c5c5c;
+        border-radius: 20px;
+        overflow: hidden;
+        z-index: 3;
+        cursor: default;
+
+    }
+
+    &__title{
+        color: #707070;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    &__body{
+        color: #707070;
+        font-size: 24px;
+        font-weight: 400;
+        margin: 5px 0;
+
+        &--tag-light{
+            color: #f700ff;
+        }
+    }
+
+    &__tags{
+        display: flex;
+    }
+
+    &__tag{
+        margin-left: 5px;
+    }
+
+    &__buttons{
+        position: absolute;
+        color: #707070;
+        top: 8px;
+        right: 15px;
+        padding: 15px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+}

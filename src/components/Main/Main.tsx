@@ -6,7 +6,7 @@ import { useNote, Note } from "../../context";
 import Header from "../Header/Header";
 
 const Main: FC = () => {
-    const { notes, selectNotesEdit, notesEdit, checkNote, removeNote } = useNote()
+    const { notes, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote } = useNote()
     const [filter, setFilter] = useState<string>('')
 
     const filterNote = useMemo<Note[]>(() => {
@@ -36,12 +36,12 @@ const Main: FC = () => {
                                 <h2 className="note__title" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}}>{index+1}. {item.title}</h2>
                                 <p className="note__body" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}}>{item.body.split(' ').map((word,index) => word.includes('#') ? <span className="note__body--tag-light" key={index}>{` ${word} `}</span> : ` ${word} `)}</p>
                                 <div className="note__tags">
-                                    {item.tags.map((tag, index) =>  <p className="note__body note__tag" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}} key={index}>{tag}</p>)}
+                                    {item.tags.map((tag, index) => <p className="note__body note__tag" style={{opacity: item.completed ? 0.5 : 1,textDecoration: item.completed ? 'line-through' : 'none'}} key={index}>{tag}</p>)}
                                 </div>
                             </div>
 
                             <div className="notes__buttons">
-                                <Button className="button button__open" >Open</Button>
+                                <Button className="button button__open" onClick={() => openModalNote(item.id)}>Open</Button>
                                 <Button className="button button__edit" onClick={() => selectNotesEdit(item.id)}>Edit</Button>
                                 <Button className="button button__delete" onClick={() => removeNote(item.id)}>Delete</Button>
                             </div>

@@ -17,6 +17,10 @@ export interface NoteContextProps {
     notesEdit: Note['id'] | null,
     checkNote: (id: Note['id']) => void,
     removeNote: (id: Note['id']) => void,
+    modal: boolean,
+    modalNote: Note[],
+    setModalNotes: (modal: boolean) => void,
+    openModalNote: (id: Note['id']) => void
 }
 
 export const NoteContext = React.createContext<NoteContextProps>({
@@ -28,4 +32,8 @@ export const NoteContext = React.createContext<NoteContextProps>({
     notesEdit: null,
     checkNote: () => {},
     removeNote: () => {},
+    modal: false,
+    modalNote: [],
+    setModalNotes: () => {},
+    openModalNote: () => {},
 })
