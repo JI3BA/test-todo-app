@@ -9,7 +9,7 @@ import Header from "../Header/Header";
 import { CSSTransition } from "react-transition-group";
 
 const Main: FC = () => {
-    const { notes, modal, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote, setModalNotes} = useNote()
+    const { notes, modal, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote} = useNote()
     const [filter, setFilter] = useState<string>('')
 
     const filterNote = useMemo<Note[]>(() => {
