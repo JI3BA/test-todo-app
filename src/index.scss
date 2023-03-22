@@ -1,9 +1,10 @@
 @import url(./fonts/Fonts.scss);
+@import './styles/mixins.scss';
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    background: #e6e6e6;
+    background: $very-light-gray;
 }

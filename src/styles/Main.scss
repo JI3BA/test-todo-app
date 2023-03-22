@@ -1,16 +1,14 @@
+@import './mixins.scss';
+
 .main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flexColumnAlignCenter();
 
     &__container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flexColumnAlignCenter();
     }
 
     &__title{
-        color: #707070;
+        color: $medium-light-gray;
         font-size: 36px;
         font-weight: 600;
     }
@@ -18,48 +16,37 @@
 
 .notes{
     margin-top: 20px;
-    max-width: 100%;
     padding-bottom: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include maxWidth100percent();
+    @include flexColumnAlignCenter();
 
     &__note{
-        display: flex;
-        justify-content: space-between;
+        @include flexSpaceB();
         margin-top: 20px;
-        max-width: 800px;
-        width: 100%;
+        @include desktopComponent();
         cursor: pointer;
-        border: 2px solid transparent;
-        background: transparent;
-        border-bottom: 2px solid #707070;
+        @include mediumGreyBorder();
     }
 
     &__text{
-        max-width: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include maxWidth100percent();
+        @include flexColumnSpaceB();
     }
 
     &__buttons{
-        display: flex;
-        flex-direction: column;
+        @include flexColumn()
     }
 }
 
 .note{
     &__title{
-        color: #707070;
+        color: $medium-light-gray;
         font-size: 36px;
         font-weight: 600;
     }
 
     &__body{
-        color: #707070;
+        color: $medium-light-gray;
         font-size: 24px;
         font-weight: 400;
 
@@ -86,8 +73,7 @@
     }
     .notes{
         &__note{
-            max-width: 500px;
-            width: 100%;
+            @include tabletComponent()
         }
     }
     .note{
@@ -111,8 +97,7 @@
     }
     .notes{
         &__note{
-            max-width: 300px;
-            width: 100%;
+            @include phoneComponent()
         }
     }
     .note{

@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 .modal{  
     position: fixed;
     left: 0;
@@ -28,14 +30,13 @@
 
     &__container{
         position: fixed;
-        max-width: 800px;
-        width: 100%;
+        @include desktopComponent();
         padding: 20px;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        background: #e6e6e6;
-        box-shadow: 0 0 50px 50px #5c5c5c;
+        background: $very-light-gray;
+        box-shadow: 0 0 50px 50px $dark-gray-text;
         border-radius: 20px;
         overflow: hidden;
         z-index: 3;
@@ -43,13 +44,13 @@
     }
 
     &__title{
-        color: #707070;
+        color: $medium-light-gray;
         font-size: 36px;
         font-weight: 600;
     }
 
     &__body{
-        color: #707070;
+        color: $medium-light-gray;
         font-size: 24px;
         font-weight: 400;
         margin: 5px 0;
@@ -69,7 +70,7 @@
 
     &__button{
         position: absolute;
-        color: #707070;
+        color: $medium-light-gray;
         top: 8px;
         right: 15px;
         padding: 15px;
@@ -83,8 +84,7 @@
 @media screen and (max-width: 860px) {
     .modal{ 
         &__container{
-            max-width: 500px;
-            width: 100%;
+            @include tabletComponent()
         }
     }
 }
@@ -92,8 +92,7 @@
 @media screen and (max-width: 520px) {
     .modal{ 
         &__container{
-            max-width: 300px;
-            width: 100%;
+            @include phoneComponent()
         }
 
         &__title{
@@ -101,6 +100,11 @@
         }
     
         &__body{
+            font-size: 18px;
+        }
+
+        &__button{
+            padding: 5px;
             font-size: 18px;
         }
     }

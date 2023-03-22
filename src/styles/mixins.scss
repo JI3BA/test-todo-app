@@ -1,0 +1,78 @@
+$light-gray-text: #aaaaaa;
+$dark-gray-text: #5c5c5c;
+$very-light-gray: #e6e6e6;
+$medium-light-gray: #707070;
+
+@mixin maxWidth100percent {
+    max-width: 100%;
+    width: 100%;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flexColumnSpaceB{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@mixin flexSpaceB{
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin flexColumnAlignCenter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin lightGreyBorder{
+    border: 2px solid transparent;
+    background: transparent;
+    border-bottom: 2px solid #aaaaaa;
+}
+
+@mixin mediumGreyBorder{
+    border: 2px solid transparent;
+    background: transparent;
+    border-bottom: 2px solid #707070;
+}
+
+@mixin openBtn{
+    border-bottom: 2px solid #0b4100;
+    color: #0b4100;
+}
+
+@mixin editBtn{
+    border-bottom: 2px solid #ff7b00;
+    color: #ff7b00;
+}
+
+@mixin deleteBtn{
+    border-bottom: 2px solid #850000;
+    color: #850000;
+}
+
+@mixin desktopComponent{
+    max-width: 800px;
+    width: 100%;
+}
+
+@mixin tabletComponent{
+    max-width: 500px;
+    width: 100%;
+}
+
+@mixin phoneComponent{
+    max-width: 300px;
+    width: 100%;
+}

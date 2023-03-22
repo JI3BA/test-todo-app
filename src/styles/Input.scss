@@ -1,39 +1,36 @@
+@import './mixins.scss';
+
 .input{
-    max-width: 800px;
-    width: 100%;
+    @include desktopComponent();
     padding: 10px;
     outline: none;
     text-decoration: none;
-    border: 2px solid transparent;
-    background: transparent;
-    border-bottom: 2px solid #aaaaaa;
+    @include lightGreyBorder();
     font-size: 14px;
     font-weight: 500;
-    color: #5c5c5c;
+    color: $dark-gray-text;
     transition: border .5s;
 
     &::placeholder{
         font-size: 14px;
         font-weight: 500;
-        color: #aaaaaa;
+        color: $light-gray-text;
     }
 
     &__filter--active{
-        border: 2px solid #aaaaaa;
+        border: 2px solid  $light-gray-text;
         transition: border .5s;
     }
 }
 
 @media screen and (max-width: 860px) {
     .input{
-        max-width: 500px;
-        width: 100%;
+        @include tabletComponent()
     }
 }
 
 @media screen and (max-width: 520px) {
     .input{
-        max-width: 300px;
-        width: 100%;
+        @include phoneComponent()
     }
 }
