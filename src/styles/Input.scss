@@ -23,3 +23,17 @@
         transition: border .5s;
     }
 }
+
+@media screen and (max-width: 860px) {
+    .input{
+        max-width: 500px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .input{
+        max-width: 300px;
+        width: 100%;
+    }
+}

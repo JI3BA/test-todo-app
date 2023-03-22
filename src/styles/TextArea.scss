@@ -35,3 +35,21 @@
     }
    
 }
+
+@media screen and (max-width: 860px) {
+    .text-area{
+        &__container{
+            max-width: 500px;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .text-area{
+        &__container{
+            max-width: 300px;
+            width: 100%;
+        }
+    }
+}

@@ -19,8 +19,6 @@ const Modal: FC = () => {
                             {modalNote[0].tags.map((tag, index) =>  <p className="modal__body modal__tag" style={{opacity: modalNote[0].completed ? 0.5 : 1,textDecoration: modalNote[0].completed ? 'line-through' : 'none'}} key={index}>{tag}</p>)}
                         </div>
 
-                        <div className="modal__overlay"></div>
-
                         <Button className='modal__button' onClick={() => setModalNotes(false)}>X</Button>
                     </div>
                 </div>
