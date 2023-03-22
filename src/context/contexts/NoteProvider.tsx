@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import { NoteContext , Note} from './NoteContext'
 
 interface StoreProviderProps {
@@ -6,8 +6,15 @@ interface StoreProviderProps {
   }
 
 export const NoteProvider: FC<StoreProviderProps> = ({ children }) => {
-    const [notes, setNotes] = useState<Note[]>([])
+    const [notes, setNotes] = useState<Note[]>(() => {
+        const storageNotes = localStorage.getItem('notes'); 
+        return storageNotes ? JSON.parse(storageNotes) : [];
+      })
     const [notesEdit, setNotesEdit] = useState<Note['id']>(0);
+
+    useEffect(() => {
+        localStorage.setItem('notes', JSON.stringify(notes))
+    }, [notes])
 
     const addNewNote = ({title, body, tags}: Omit<Note, 'id' | 'completed'>): void => {
         setNotes([...notes, {id: Date.now(), title, body, tags, completed: false}])      

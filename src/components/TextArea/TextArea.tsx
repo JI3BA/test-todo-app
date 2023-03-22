@@ -8,12 +8,13 @@ interface ITextArea {
     onKeyDown?: React.KeyboardEventHandler,
     onKeyUp?: React.KeyboardEventHandler,
     onBlur?: React.FocusEventHandler,
-    onFocus?: React.FocusEventHandler
+    onFocus?: React.FocusEventHandler,
+    className: string,
 }
 
 const TextArea = ({placeholder, value, name, ...rest}: ITextArea) => {
     return(
-            <textarea className='text-area' placeholder={placeholder} value={value} name={name} {...rest}/>
+            <textarea placeholder={placeholder} value={value} name={name} {...rest}/>
     )
 }
 

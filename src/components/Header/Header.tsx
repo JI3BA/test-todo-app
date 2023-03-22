@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Input from "../Input/Input";
 import '../../styles/Header.scss'
 import TextArea from "../TextArea/TextArea";
@@ -20,7 +20,16 @@ const Header: FC<HeaderProps> = (props) => {
     const { addNewNote, changeNote } = useNote()
     const isEdit = props.mode === 'edit';
     const [note, setNote] = useState(isEdit ? props.editNote : {title: '', body: '', tags: ['']});
-    const [bodyTag, setBodyTag] = useState<string[]>([]);
+    const [bodyTag, setBodyTag] = useState<string[]>(['']);
+    const [formValid, setFormValid] = useState<boolean>(false);
+    const [nickDirty, setNickDirty] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
+    useEffect(() => {
+        if(isEdit){
+            setFormValid(true)
+        }
+    }, [isEdit])
  
     const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -30,7 +39,8 @@ const Header: FC<HeaderProps> = (props) => {
         }
         
         addNewNote(note);
-        setNote({title: '', body: '', tags: []});
+        setNote({title: '', body: '', tags: ['']});
+        setFormValid(false);
     };
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,9 +52,19 @@ const Header: FC<HeaderProps> = (props) => {
         }
     };
 
-    const onBlur = () => {
+    const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         const checkDupTags: string[] = [...bodyTag]
         setNote({...note, tags: checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item))})
+
+        if(event.target.value.trim().length < 5){
+            setNickDirty(true)
+            setErrorMessage('Field should contain more then 5 symbols')
+            setFormValid(false)
+        }else{
+            setNickDirty(false)
+            setErrorMessage('')
+            setFormValid(true)
+        }
     }
 
     return(
@@ -52,13 +72,20 @@ const Header: FC<HeaderProps> = (props) => {
             <div className="header__container wrapper">  
                 <form className='form'>
                     <Input value={note.title} placeholder='Title' onChange={onChange} name='title'/>
-                    <TextArea value={note.body} placeholder='Body' onChange={onChange} onBlur={onBlur} name='body'/>
+
+                    <div className='text-area__container'>
+                        {nickDirty ? <p className='text-area__message'>{errorMessage}</p> : <p className='text-area__message'></p>}
+                        <TextArea value={note.body} className='text-area' placeholder='Body' onChange={onChange} onBlur={onBlur} name='body'/>
+                    </div>
+
                     {isEdit && <div className="note__tags">
                                 {note.tags.map((tag, index) =>  <p className="note__body note__tag" key={index}>{tag}</p>)}
                             </div>
                     }
-                    {!isEdit ? <Button className="button" onClick={onClick}>Add Note</Button>
-                    : <Button className="button" onClick={onClick}>Edit Note</Button>}
+
+                    {!isEdit ? <Button className="button" disabled={!formValid} onClick={onClick}>Add Note</Button>
+                    : <Button className="button" disabled={!formValid} onClick={onClick}>Edit Note</Button>
+                    }
                 </form>
             </div>
         </div>
