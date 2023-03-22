@@ -57,11 +57,11 @@ export const NoteProvider: FC<StoreProviderProps> = ({ children }) => {
     const openModalNote = (id: Note['id']): void => {
         setModalNote(notes.filter(item => item.id === id))
         setModal(true)
-      }   
+    }   
     
-      const setModalNotes = (modal: boolean): void => {
+    const setModalNotes = (modal: boolean): void => {
         setModal(modal)
-      }
+    }
 
     return <NoteContext.Provider value={{notes, setNotes, addNewNote, selectNotesEdit, changeNote, notesEdit, checkNote, removeNote,
         modal, modalNote, setModalNotes, openModalNote}}>{children}</NoteContext.Provider>

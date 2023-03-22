@@ -8,6 +8,24 @@
     z-index: 2;
     cursor: pointer;
 
+    &-enter{
+        opacity: 0;
+    }
+
+    &-enter-active{
+        opacity: 1;
+        transition: opacity 1s;
+    }
+
+    &-exit{
+        opacity: 1;
+    }
+
+    &-exit-active{
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
     &__container{
         position: fixed;
         max-width: 800px;
@@ -22,7 +40,6 @@
         overflow: hidden;
         z-index: 3;
         cursor: default;
-
     }
 
     &__title{
@@ -50,7 +67,7 @@
         margin-left: 5px;
     }
 
-    &__buttons{
+    &__button{
         position: absolute;
         color: #707070;
         top: 8px;
@@ -58,6 +75,7 @@
         padding: 15px;
         font-size: 24px;
         cursor: pointer;
+        border: transparent;
     }
 
 }

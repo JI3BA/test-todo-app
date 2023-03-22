@@ -1,12 +1,15 @@
 import React, { FC, useState, useMemo } from "react";
 import Filter from "../Filter/Filter";
+import Modal from "../Modal/Modal";
 import '../../styles/Main.scss'
+import '../../styles/Modal.scss'
 import Button from "../Button/Button";
 import { useNote, Note } from "../../context";
 import Header from "../Header/Header";
+import { CSSTransition } from "react-transition-group";
 
 const Main: FC = () => {
-    const { notes, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote } = useNote()
+    const { notes, modal, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote, setModalNotes} = useNote()
     const [filter, setFilter] = useState<string>('')
 
     const filterNote = useMemo<Note[]>(() => {
@@ -49,6 +52,9 @@ const Main: FC = () => {
                         })
                     }
                 </div>
+                <CSSTransition in={modal} classNames='modal' timeout={1000} mountOnEnter unmountOnExit>
+                    <Modal />
+                </CSSTransition> 
             </div>
         </div>
     )
