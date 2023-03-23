@@ -59,8 +59,8 @@ const Header: FC<HeaderProps> = (props) => {
     };
 
     const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-        const checkDupTags: string[] = [...bodyTag]
-        setNote({...note, tags: checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item))})
+        const checkDupTags: RegExpMatchArray[] = [...bodyTag].map(item => item.match(/#.+?\b/)!)
+        setNote({...note, tags: [String(checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item)))]})
 
         if(event.target.value.trim().length < 5){
             setNickDirty(true)
@@ -73,15 +73,26 @@ const Header: FC<HeaderProps> = (props) => {
         }
     }
 
+    const onBlurTitle = (event: React.FocusEvent<HTMLInputElement>) => {
+        event.target.value.trim()
+    }
+
+    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if(e.key === 'Enter'){
+            const strBody = note.body
+            setNote({...note, body: strBody + ' '})
+        }
+    }
+
     return(
         <div className="header">
             <div className="header__container wrapper">  
                 <form className='form'>
-                    <Input value={note.title} placeholder='Title' onChange={onChange} name='title'/>
+                    <Input value={note.title} placeholder='Title' onBlur={onBlurTitle} onChange={onChange} name='title'/>
 
                     <div className='text-area__container'>
                         {nickDirty ? <p className='text-area__message'>{errorMessage}</p> : <p className='text-area__message'></p>}
-                        <TextArea value={note.body} className='text-area' placeholder='Body' onChange={onChange} onBlur={onBlur} name='body'/>
+                        <TextArea value={note.body} className='text-area' placeholder='Body' onChange={onChange} onKeyDown={onKeyDown} onBlur={onBlur} name='body'/>
                     </div>
 
                     {isEdit && <div className="note__tags">
