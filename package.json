@@ -2,7 +2,7 @@
   "name": "test-todo-app-ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://todo-app-ji3ba.netlify.app/",
+  "homepage": "https://ji3ba.github.io/test-todo-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
