@@ -11,10 +11,8 @@ export interface Iinput {
     onFocus?: React.FocusEventHandler
 }
 
-const Input = ({placeholder, value, name, ...rest}: Iinput) => {
+export const Input = ({placeholder, value, name, ...rest}: Iinput) => {
     return(
             <input className='input' type='text' placeholder={placeholder} value={value} name={name} {...rest}/>
     )
 }
-
-export default Input

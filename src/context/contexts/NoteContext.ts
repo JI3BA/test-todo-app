@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 
 export interface Note{
     id: number,
@@ -23,7 +23,7 @@ export interface NoteContextProps {
     openModalNote: (id: Note['id']) => void
 }
 
-export const NoteContext = React.createContext<NoteContextProps>({
+export const NoteContext = createContext<NoteContextProps>({
     notes: [],
     setNotes: () => {},
     addNewNote: () => {},

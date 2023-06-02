@@ -1,11 +1,11 @@
-import React, {FC, useState, useEffect} from 'react';
+import {useState, useEffect, ReactNode} from 'react';
 import { NoteContext , Note} from './NoteContext'
 
 interface StoreProviderProps {
-    children: React.ReactNode;
+    children: ReactNode;
   }
 
-export const NoteProvider: FC<StoreProviderProps> = ({ children }) => {
+export const NoteProvider = ({ children }: StoreProviderProps) => {
     const [notes, setNotes] = useState<Note[]>(() => {
         const storageNotes = localStorage.getItem('notes'); 
         return storageNotes ? JSON.parse(storageNotes) : [];

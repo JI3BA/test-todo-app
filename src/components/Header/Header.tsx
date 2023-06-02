@@ -1,8 +1,8 @@
-import React, { FC, useState, useEffect } from "react";
-import Input from "../Input/Input";
+import React, { useState, useEffect } from "react";
+import {Input} from "../Input/Input";
 import '../../styles/Header.scss'
-import TextArea from "../TextArea/TextArea";
-import Button from "../Button/Button";
+import {TextArea} from "../TextArea/TextArea";
+import {Button} from "../Button/Button";
 import { useNote, Note } from "../../context";
 
 interface addHeaderProps{
@@ -16,7 +16,7 @@ interface EditHeaderProps{
 
 type HeaderProps = addHeaderProps | EditHeaderProps
 
-const Header: FC<HeaderProps> = (props) => {
+export const Header = (props: HeaderProps) => {
     const { addNewNote, changeNote } = useNote()
     const isEdit = props.mode === 'edit';
     const [note, setNote] = useState(isEdit ? props.editNote : {title: '', body: '', tags: ['']});
@@ -96,7 +96,7 @@ const Header: FC<HeaderProps> = (props) => {
                     </div>
 
                     {isEdit && <div className="note__tags">
-                                {note.tags.map((tag, index) =>  <p className="note__body note__tag" key={index}>{tag}</p>)}
+                                {note.tags.map((tag, index) => <p className="note__body note__tag" key={index}>{tag}</p>)}
                             </div>
                     }
 
@@ -108,5 +108,3 @@ const Header: FC<HeaderProps> = (props) => {
         </div>
     )
 }
-
-export default Header

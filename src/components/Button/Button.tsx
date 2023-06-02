@@ -8,10 +8,9 @@ interface IButton{
     className: string,
 }
 
-const HeaderButton = ({children, onClick, ...rest}: IButton) => {
+export const Button = ({children, onClick, ...rest}: IButton) => {
     return(
             <button onClick={onClick} {...rest} >{children}</button>
     )
 }
 
-export default HeaderButton

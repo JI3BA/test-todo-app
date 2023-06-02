@@ -1,14 +1,14 @@
-import React, { FC, useState, useMemo } from "react";
-import Filter from "../Filter/Filter";
-import Modal from "../Modal/Modal";
+import React, { useState, useMemo } from "react";
+import {Filter} from "../Filter/Filter";
+import {Modal} from "../Modal/Modal";
 import '../../styles/Main.scss'
 import '../../styles/Modal.scss'
-import Button from "../Button/Button";
+import {Button} from "../Button/Button";
 import { useNote, Note } from "../../context";
-import Header from "../Header/Header";
+import {Header} from "../Header/Header";
 import { CSSTransition } from "react-transition-group";
 
-const Main: FC = () => {
+export const Main = () => {
     const { notes, modal, selectNotesEdit, notesEdit, checkNote, removeNote, openModalNote} = useNote()
     const [filter, setFilter] = useState<string>('')
 
@@ -64,5 +64,3 @@ const Main: FC = () => {
         </div>
     )
 }
-
-export default Main

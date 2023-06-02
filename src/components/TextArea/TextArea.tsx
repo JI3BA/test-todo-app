@@ -12,10 +12,8 @@ interface ITextArea {
     className: string,
 }
 
-const TextArea = ({placeholder, value, name, ...rest}: ITextArea) => {
+export const TextArea = ({placeholder, value, name, ...rest}: ITextArea) => {
     return(
             <textarea placeholder={placeholder} value={value} name={name} {...rest}/>
     )
 }
-
-export default TextArea

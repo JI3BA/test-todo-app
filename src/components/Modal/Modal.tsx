@@ -1,12 +1,12 @@
-import React, { FC } from "react";
+import React from "react";
 import { useNote } from "../../context";
 import '../../styles/Main.scss'
 import '../../styles/Modal.scss'
-import Button from '../Button/Button'
+import {Button} from '../Button/Button'
 
 
 
-const Modal: FC = () => {
+export const Modal = () => {
     const { modal, modalNote, setModalNotes} = useNote()
 
     return (
@@ -26,5 +26,3 @@ const Modal: FC = () => {
         </div>
     )
 }
-
-export default Modal
