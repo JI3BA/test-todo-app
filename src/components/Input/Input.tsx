@@ -1,17 +1,18 @@
+import { ChangeEvent, KeyboardEvent, FocusEvent} from "react";
 import '../../styles/Input.scss'
 
-export interface Iinput {
+export interface IInput {
     placeholder: string,
     value: string,
     name?: string,
-    onChange: React.ChangeEventHandler,
-    onKeyDown?: React.KeyboardEventHandler,
-    onKeyUp?: React.KeyboardEventHandler,
-    onBlur?: React.FocusEventHandler,
-    onFocus?: React.FocusEventHandler
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void,
+    onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void,
+    onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void,
+    onBlur?: (e: FocusEvent<HTMLInputElement>) => void,
+    onFocus?: (e: FocusEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({placeholder, value, name, ...rest}: Iinput) => {
+export const Input = ({placeholder, value, name, ...rest}: IInput) => {
     return(
             <input className='input' type='text' placeholder={placeholder} value={value} name={name} {...rest}/>
     )
