@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import {Input} from "../Input/Input";
 import '../../styles/Header.scss'
 import {TextArea} from "../TextArea/TextArea";
@@ -16,10 +16,10 @@ interface EditHeaderProps{
 
 type HeaderProps = addHeaderProps | EditHeaderProps
 
-export const Header = (props: HeaderProps) => {
+export const Header: FC<HeaderProps> = ({mode}, {editNote}: EditHeaderProps) => {
     const { addNewNote, changeNote } = useNote()
-    const isEdit = props.mode === 'edit';
-    const [note, setNote] = useState(isEdit ? props.editNote : {title: '', body: '', tags: ['']});
+    const isEdit = mode === 'edit';
+    const [note, setNote] = useState(isEdit ? editNote : {title: '', body: '', tags: ['']});
     const [bodyTag, setBodyTag] = useState<string[]>(['']);
     const [formValid, setFormValid] = useState<boolean>(false);
     const [nickDirty, setNickDirty] = useState<boolean>(true);
