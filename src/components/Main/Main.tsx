@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo, ChangeEvent } from "react";
 import {Filter} from "../Filter/Filter";
 import {Modal} from "../Modal/Modal";
 import '../../styles/Main.scss'
@@ -21,7 +21,7 @@ export const Main = () => {
     }, [notes, filter])
     
 
-    const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
         setFilter(e.target.value)
     }
 
