@@ -4,6 +4,7 @@ import '../../styles/Header.scss'
 import {TextArea} from "../TextArea/TextArea";
 import {Button} from "../Button/Button";
 import { useNote, Note } from "../../context";
+import {MappedHeaderTags} from "../Map/MappedHeaderTags";
 
 interface addHeaderProps{
     mode: 'add',
@@ -14,12 +15,18 @@ interface EditHeaderProps{
     editNote: Omit<Note, 'id' | 'completed'>,
 }
 
+export type NoteType = {
+    title: string,
+    body: string,
+    tags: string[]
+}
+
 type HeaderProps = addHeaderProps | EditHeaderProps
 
-export const Header: FC<HeaderProps> = ({mode}, {editNote}: EditHeaderProps) => {
+export const Header: FC<HeaderProps> = (props) => {
     const { addNewNote, changeNote } = useNote()
-    const isEdit = mode === 'edit';
-    const [note, setNote] = useState(isEdit ? editNote : {title: '', body: '', tags: ['']});
+    const isEdit = props.mode === 'edit';
+    const [note, setNote] = useState<NoteType>(isEdit ? props.editNote : {title: '', body: '', tags: ['']});
     const [bodyTag, setBodyTag] = useState<string[]>(['']);
     const [formValid, setFormValid] = useState<boolean>(false);
     const [nickDirty, setNickDirty] = useState<boolean>(true);
@@ -58,7 +65,7 @@ export const Header: FC<HeaderProps> = ({mode}, {editNote}: EditHeaderProps) => 
         }
     };
 
-    const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const onBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
         const checkDupTags: RegExpMatchArray[] = [...bodyTag].map(item => item.match(/#.+?\b/)!)
         setNote({...note, tags: [String(checkDupTags.filter((item,index) => index === checkDupTags.indexOf(item)))]})
 
@@ -77,7 +84,7 @@ export const Header: FC<HeaderProps> = ({mode}, {editNote}: EditHeaderProps) => 
         event.target.value.trim()
     }
 
-    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if(e.key === 'Enter'){
             const strBody = note.body
             setNote({...note, body: strBody + ' '})
@@ -96,7 +103,7 @@ export const Header: FC<HeaderProps> = ({mode}, {editNote}: EditHeaderProps) => 
                     </div>
 
                     {isEdit && <div className="note__tags">
-                                {note.tags.map((tag, index) => <p className="note__body note__tag" key={index}>{tag}</p>)}
+                                <MappedHeaderTags note={note}/>
                             </div>
                     }
 
